@@ -7,15 +7,15 @@ sudo yum update -y --exclude=kernel
 sudo yum install -y nano git unzip screen
 
 # Apache
-sudo yum install -y httpd httd-devel httpd-tools
+sudo yum install -y httpd httpd-devel httpd-tools
 sudo chkconfig --add httpd
-sudo chkconfig httd on
-sudo service httd stop
+sudo chkconfig httpd on
+sudo service httpd stop
 
 sudo rm -rf /var/www/html
 sudo ln -s /vagrant /var/www/html
 
-service httd start
+service httpd start
 
 # PHP
 sudo yum install -y php php-cli php-common php-devel php-mysql
@@ -34,4 +34,4 @@ cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/opuzaman21/VagrantScripts/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/opuzaman21/VagrantScripts/master/files/info.php
 
-sudo server httd restart
+sudo server httpd restart
