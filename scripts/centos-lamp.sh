@@ -14,7 +14,8 @@ sudo systemctl status httpd
 sudo systemctl stop httpd
 
 sudo rm -rf /var/www/html
-sudo ln -s /vagrant /var/www/html/
+sudo mkdir /var/www/html
+sudo ln -s /vagrant /var/www/html
 
 sudo systemctl start httpd
 
