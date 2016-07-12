@@ -15,7 +15,6 @@ sudo service ntpd start
 sudo chkconfig httpd on
 sudo service httpd start
 sudo service httpd stop
-
 sudo rm -rf /var/www/html
 sudo ln -s /vagrant /var/www/html
 
