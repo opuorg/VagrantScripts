@@ -7,6 +7,17 @@ sudo yum update -y --exclude=kernel
 sudo yum install -y nano git unzip screen
 
 # Apache
+sudo yum -y install httpd mysql mysql-server php wget ntp
+sudo chkconfig ntpd on
+sudo ntpdate pool.ntp.org
+sudo service ntpd start
+
+sudo chkconfig httpd on
+sudo service httpd start
+sudo service httpd stop
+
+
+
 sudo yum install -y httpd httpd-devel httpd-tools
 sudo systemctl start httpd
 sudo systemctl enable httpd
@@ -16,22 +27,21 @@ sudo systemctl stop httpd
 sudo rm -rf /var/www/html
 sudo ln -s /vagrant /var/www/html
 
-sudo systemctl start httpd
+sudo service httpd start
 
 # PHP
 sudo yum install -y php php-cli php-common php-devel php-mysql
 
 #MySQL
-sudo yum -y install mariadb-server mariadb
-sudo systemctl start mariadb
-sudo systemctl enable mariadb
-
-sudo systemctl status mariadb
+wget http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
+sudo rpm -Uvh mysql-community-release-el6-5.noarch.rpm
+sudo yum -y install mysql mysql-server
+sudo chkconfig mysqld on
+sudo service mysqld start
 
 # Download starter content
-sudo yum install -y wget
-cd ~
+cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/opuzaman21/VagrantScripts/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/opuzaman21/VagrantScripts/master/files/info.php
 
-sudo systemctl restart httpd
+sudo service httpd restart
