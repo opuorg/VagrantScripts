@@ -16,14 +16,6 @@ sudo chkconfig httpd on
 sudo service httpd start
 sudo service httpd stop
 
-
-
-sudo yum install -y httpd httpd-devel httpd-tools
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo systemctl status httpd
-sudo systemctl stop httpd
-
 sudo rm -rf /var/www/html
 sudo ln -s /vagrant /var/www/html
 
